@@ -16,18 +16,23 @@ def index(request):
     return render(request, "myapp/index.html", context)
 
 def create_post(request):
-    return render(request, "myapp/create_post.html")
+
+    if request.user.is_authenticated:
+        return render(request, "myapp/create_post.html")
+    else:
+        return redirect('login')
 
 def profile(request, name):
 
-    user = get_object_or_404(User, username=name)
-    posts = Post.objects.filter(user=user).order_by('-posted_time')
+    if request.user.is_authenticated:
 
-    context = {'name': name, 'user': request.user, "posts": posts}
-    return render(request, "myapp/profile.html", context)
+        user = get_object_or_404(User, username=name)
+        posts = Post.objects.filter(user=user).order_by('-posted_time')
 
-def all_posts(request):
-    return HttpResponse("Hello world. You are at the all posts page.")
+        context = {'name': name, 'user': request.user, "posts": posts}
+        return render(request, "myapp/profile.html", context)
+    else:
+        return redirect('login')
 
 def login(request):
     context = {}
@@ -57,10 +62,11 @@ def success(request):
     return render(request, "registration/success.html", context)
 
 def create_post_submit(request):
-    body = request.POST['body']
-    # y
-    q = Post(post_text=body, posted_time=timezone.now(), id=None, user=request.user)
-    q.save()
+    if request.user.is_authenticated:
+        body = request.POST['body']
+        # y
+        q = Post(post_text=body, posted_time=timezone.now(), id=None, user=request.user)
+        q.save()
     return redirect('index')
 
 def logout(request):
