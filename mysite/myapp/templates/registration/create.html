@@ -1,8 +1,8 @@
 <h1>Create Account</h1>
 
-<form method="POST" action="">
-    <!-- need to pass in token-->
-    {{ form }}
-    <br><br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
     <button type="submit">Create Account</button>
 </form>
