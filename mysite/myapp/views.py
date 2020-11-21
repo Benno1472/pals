@@ -6,15 +6,16 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def index(request):
-    context = {}
+    context = {'user': request.user}
     return render(request, "myapp/index.html", context)
 
 def create_post(request):
     return HttpResponse("Hello world. You are at the create post page.")
 
-def my_profile(request):
-    return HttpResponse("Hello world. You are at the my profile page.")
-
+def profile(request, name):
+    context = {'name': name}
+    return render(request, "myapp/profile.html", context)
+    
 def all_posts(request):
     return HttpResponse("Hello world. You are at the all posts page.")
 

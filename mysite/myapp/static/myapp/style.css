@@ -17,13 +17,33 @@ a {
     z-index: 1;
     top: 1;
     left: 1;
-    background-color: red;
     margin: 4px;
+    border-width: 1px;
+    border-color: rgb(139, 139, 139);
+    border-style: solid;
+    list-style: none;
 }
 
-#content {
-    padding-left: 170px;
+#sidebar a {
+    color: rgb(78, 168, 228);
+}
 
+#sidebar h1 {
+    text-align: center;
+
+}
+
+#sidebar a:hover {
+    color: rgb(44, 121, 172);
+}
+
+#sidebar ul {
+    list-style: none;
+}
+
+
+#content {
+    padding-left: 185px;
 }
 
 .post {
