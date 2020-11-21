@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <title>{% block title %}Page{% endblock %} | Prototype Social Media</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/create/">Create Post</a></li>
+            <li><a href="/profile/">My Profile</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
