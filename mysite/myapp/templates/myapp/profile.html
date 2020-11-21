@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }}{% endblock %}
+
+{% block content %}
+<h1>Profile Page of: {{ name }}</h1>
+
+<h2>Posts</h2>
+
+{% include "post.html" with name="ABA" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
+{% include "post.html" with name="CAJS" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
+{% include "post.html" with name="KDLSA" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
+{% include "post.html" with name="fSAJF" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
+
+
+{% endblock %}

@@ -10,10 +10,23 @@
 <body>
     <div id="sidebar">
         {% block sidebar %}
+
+        <h1>Pals</h1>
+
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/create/">Create Post</a></li>
-            <li><a href="/profile/">My Profile</a></li>
+            {% if user.is_authenticated %}
+            <li>Hello, {{ user.username }}</li>
+            {% endif %}
+            <li><a href="{% url 'index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'create_post' %}">Create Post</a></li>
+            <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>           
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+
+
         </ul>
         {% endblock %}
     </div>
