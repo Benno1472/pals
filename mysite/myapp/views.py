@@ -43,8 +43,8 @@ def create(request):
         if form.is_valid():
             # create the user and store
             form.save()
-        # redirect to the success page
-        return redirect("/myapp/accounts/create/success")
+            # redirect to the success page
+            return redirect("/myapp/accounts/create/success")
     else:
         form = UserCreationForm()
 
