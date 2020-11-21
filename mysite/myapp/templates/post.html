@@ -1,12 +1,14 @@
+{% load humanize %}
+
 <div class="post">
 
     <div class="post-header">
-        <p class="username"><a href="{{ name_page|default:"#" }}">{{ name }}</a></p>
-        <p class="timestamp">{{ timestamp }}</p>
+        <p class="username"><a href="{% url 'profile' user.username %}">{{ post.user }}</a></p>
+        <p class="timestamp">{{ post.posted_time|naturaltime }}</p>
     </div>
 
     <div class="post-contents">
-        <p>{{ content }}</p>
+        <p>{{ post.post_text }}</p>
     </div>
 
     <div class="post-actions">
