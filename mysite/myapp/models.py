@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from PIL import Image
+from django.conf import settings
 
 # Create your models here.
 # find person first, then get posts though ID
@@ -20,8 +21,8 @@ class Person(models.Model):
 
 
 class Post(models.Model):
-    person = models.ForeignKey(
-        Person, on_delete=models.CASCADE, default="Nobody")
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     post_img = models.ImageField(
         upload_to=None, height_field=None, width_field=None, max_length=100, default="No picture")
     post_text = models.CharField(max_length=200, default="no text")

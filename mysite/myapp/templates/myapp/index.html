@@ -8,7 +8,7 @@
 <h2>Today</h2>
 
 {% for post in posts %}
-{% include "post.html" with name=post.post_owner_name content=post.post_text timestamp="Sometime" %}
+{% include "post.html" with post=post %}
 {% endfor %}
 
 <h2>Yesterday</h2>

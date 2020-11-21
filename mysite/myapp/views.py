@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 from .models import Post
 
@@ -8,7 +10,7 @@ from .models import Post
 
 def index(request):
 
-    posts = Post.objects.all().order_by('posted_time')
+    posts = Post.objects.all().order_by("-posted_time")
 
     context = {'user': request.user, "posts": posts}
     return render(request, "myapp/index.html", context)
@@ -18,7 +20,8 @@ def create_post(request):
 
 def profile(request, name):
 
-    posts = Post.objects.filter(post_owner_name=name).order_by('-posted_time')
+    user = get_object_or_404(User, username=name)
+    posts = Post.objects.filter(user=user).order_by('-posted_time')
 
     context = {'name': name, 'user': request.user, "posts": posts}
     return render(request, "myapp/profile.html", context)
@@ -40,8 +43,8 @@ def create(request):
         if form.is_valid():
             # create the user and store
             form.save()
-        # redirect to the success page
-        return redirect("/myapp/accounts/create/success")
+            # redirect to the success page
+            return redirect("/myapp/accounts/create/success")
     else:
         form = UserCreationForm()
 
@@ -56,7 +59,7 @@ def success(request):
 def create_post_submit(request):
     body = request.POST['body']
     # y
-    q = Post(post_text=body)
+    q = Post(post_text=body, posted_time=timezone.now(), id=None, user=request.user)
     q.save()
     return redirect('index')
 
