@@ -55,7 +55,8 @@ def success(request):
 
 def create_post_submit(request):
     body = request.POST['body']
-    q = Post(post_text=body, post_owner_name=request.user)
+    # y
+    q = Post(post_text=body)
     q.save()
     return redirect('index')
 
