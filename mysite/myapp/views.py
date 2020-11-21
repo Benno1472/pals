@@ -1,5 +1,5 @@
 from typing import ContextManager
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 
@@ -33,9 +33,18 @@ def create(request):
         if form.is_valid():
             # create the user and store
             form.save()
+        # redirect to the success page
+        return redirect("/myapp/accounts/create/success")
+    else:
+        form = UserCreationForm()
+
 
     context = {'form':form}
     return render(request, "registration/create.html", context)
+
+def success(request):
+    context = {}
+    return render(request, "registration/success.html", context)
 
 def logout(request):
     # logout page
