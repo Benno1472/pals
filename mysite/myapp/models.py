@@ -29,6 +29,7 @@ class Post(models.Model):
     # when you are getting this date, remeber to subtract to get time since last
     posted_time = models.DateTimeField("previous time")
 
+    post_used = 0
     def __str__(self):
         return self.post_text
 
