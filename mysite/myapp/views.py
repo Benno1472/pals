@@ -25,6 +25,12 @@ def login(request):
 def create(request):
     # default User Creation Form from django
     form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     context = {'form':form}
     return render(request, "registration/create.html", context)
 
