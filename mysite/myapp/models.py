@@ -19,13 +19,9 @@ class Comment:
         return self.person,self.text
 
 class Post(models.Model):
-<<<<<<< HEAD
     post_owner = "Person"
     post_id = 00000000
-    post_img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-=======
-    #post_img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
->>>>>>> d188effdb698b596733a43d538c26f27792a36f7
+#   post_img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
     post_text = models.CharField(max_length=200)
     posted_time = models.DateTimeField("previous time")  # when you are getting this date, remeber to subtract to get time since last
     comment_list = []
