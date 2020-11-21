@@ -1,6 +1,7 @@
 from typing import ContextManager
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -20,3 +21,14 @@ def all_posts(request):
 def login(request):
     context = {}
     return render(request, "myapp/registration/login.html", context)
+
+def create(request):
+    # default User Creation Form from django
+    form = UserCreationForm()
+    context = {'form':form}
+    return render(request, "registration/create.html", context)
+
+def logout(request):
+    # logout page
+    context = {}
+    return render(request, "registration/logout.html", context)
