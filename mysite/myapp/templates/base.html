@@ -4,7 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
-    <title>{% block title %}Page{% endblock %} | Prototype Social Media</title>
+    <title>{% block title %}Page{% endblock %} | Pals</title>
 </head>
 
 <body>
@@ -21,6 +21,7 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'create_post' %}">Create Post</a></li>
             <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
+            <li><a href="#">Pals List</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>           
             {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>

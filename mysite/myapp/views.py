@@ -1,21 +1,28 @@
-from typing import ContextManager
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+
+from .models import Post
 
 # Create your views here.
 
 def index(request):
-    context = {'user': request.user}
+
+    posts = Post.objects.all().order_by('posted_time')
+
+    context = {'user': request.user, "posts": posts}
     return render(request, "myapp/index.html", context)
 
 def create_post(request):
-    return HttpResponse("Hello world. You are at the create post page.")
+    return render(request, "myapp/create_post.html")
 
 def profile(request, name):
-    context = {'name': name}
+
+    posts = Post.objects.filter(post_owner_name=name).order_by('-posted_time')
+
+    context = {'name': name, 'user': request.user, "posts": posts}
     return render(request, "myapp/profile.html", context)
-    
+
 def all_posts(request):
     return HttpResponse("Hello world. You are at the all posts page.")
 
@@ -45,6 +52,12 @@ def create(request):
 def success(request):
     context = {}
     return render(request, "registration/success.html", context)
+
+def create_post_submit(request):
+    body = request.POST['body']
+    q = Post(post_text=body, post_owner_name=request.user)
+    q.save()
+    return redirect('index')
 
 def logout(request):
     # logout page
