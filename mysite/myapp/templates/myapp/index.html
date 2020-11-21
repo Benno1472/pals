@@ -7,12 +7,9 @@
 
 <h2>Today</h2>
 
-{% include "post.html" with name="Youngwoo Seo" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
-{% include "post.html" with name="Youngwoo Seo" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
-{% include "post.html" with name="Youngwoo Seo" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
-{% include "post.html" with name="Youngwoo Seo" content="YOLO I'm TESTING THIS OUT if hrfdkhfd shfkdj hjkhfdsjk kjdfsh kdfhkjfdsk fdskjhdfks" timestamp="2 mins ago."%}
-
-
+{% for post in posts %}
+{% include "post.html" with name=post.post_owner_name content=post.post_text timestamp="Sometime" %}
+{% endfor %}
 
 <h2>Yesterday</h2>
 
