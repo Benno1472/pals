@@ -36,7 +36,9 @@ def create(request):
 
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        # if the form is valid
         if form.is_valid():
+            # create the user and store
             form.save()
 
     context = {'form':form}
