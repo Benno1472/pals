@@ -54,8 +54,7 @@ class Schedule(models.Model):
     person = models.ForeignKey(
         Person, on_delete=models.CASCADE, default="Nobody")
     schedule_item = models.CharField(max_length=200, default="no text")
-    schedule_time = models.TimeF
-    ield(auto_now=False, auto_now_add=False)
+    schedule_time = models.TimeField(auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return self.schedule_item, self.schedule_time
