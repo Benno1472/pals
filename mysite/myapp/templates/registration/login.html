@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends "base.html" %}
 
 {% block title %}Login{% endblock %}
@@ -14,3 +15,35 @@
 </form>
 
 {% endblock %}
+=======
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+</head>
+
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    {{form.username.label}}
+    <br>
+    {{form.username}}
+    <br><br><br>
+    {{form.password.label}}
+    <br>
+    {{form.password}}
+    <br><br>
+    <button type="submit">Login</button>
+    <br><br>
+    <!-- display a messages (new account creation or login error messages) -->
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+    <br>
+    <p>Don't have an account? Create one <a href="\myapp/accounts/create">here</a></p>
+  </form>
+</body>
+
+</html>
+>>>>>>> Stashed changes
