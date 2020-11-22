@@ -109,6 +109,23 @@ def create(request):
     context = {'form': form}
     return render(request, "registration/create.html", context)
 
+def delete_check(request):
+    # take the user to the confirm deletion page
+    context = {}
+    return render(request, "registration/delete.html", context)
+
+def delete_user(request):
+    # get the user name and delete the account
+    context = {}
+    # check authentication
+    if request.user.is_authenticated:
+        # get the username
+        username = request.user.username
+        # delete the user
+        u = User.objects.get(username=username)
+        u.delete()
+    return redirect('index')
+
 
 def create_post_submit(request):
     if request.user.is_authenticated:
