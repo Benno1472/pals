@@ -79,6 +79,35 @@ a {
     margin: 0;
 
 }
+
+.post-reply .post-reply-head .timestamp{
+
+    float: right;
+    width: 20%;
+}
+
+.post-reply .post-reply-head .username {
+
+    float: left;
+    width: 80%;
+}
+
+.post-reply .post-reply-head .username a {
+    color: rgb(65, 166, 206)
+}
+
+.post-reply {
+    background-color:rgb(211, 227, 238);
+    padding: 5px;
+    width: 100%;
+    display: inline-block;
+}
+
+.post-reply p {
+
+    margin: 0;
+}
+
 .post-contents {
     width: 100%;
     float: left;
