@@ -1,29 +1,9 @@
-<<<<<<< Updated upstream
 {% extends "base.html" %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
 
-<h2>Login</h2>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-
-  <p>Don't have an account? Create one <a href="\myapp/accounts/create">here</a></p>
-  <button type="submit">Login</button>
-</form>
-
-{% endblock %}
-=======
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Login</title>
-</head>
-
-<body>
   <form method="POST">
     {% csrf_token %}
     {{form.username.label}}
@@ -43,7 +23,5 @@
     <br>
     <p>Don't have an account? Create one <a href="\myapp/accounts/create">here</a></p>
   </form>
-</body>
 
-</html>
->>>>>>> Stashed changes
+  {% endblock %}

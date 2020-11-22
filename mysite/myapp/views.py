@@ -3,12 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from django.contrib.auth.models import User
-<<<<<<< Updated upstream
-from django.contrib.auth import logout as lg
-=======
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
->>>>>>> Stashed changes
 from .models import Post
 
 # Create your views here.
@@ -96,8 +92,8 @@ def create_post_submit(request):
     return redirect('index')
 
 
-def logout(request):
-    lg(request)
+def logout_page(request):
+    logout(request)
     return redirect('index')
 
 def search(request):

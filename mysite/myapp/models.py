@@ -36,13 +36,13 @@ class Post(models.Model):
 
 # How to use hashmap/dict
 #
-class Friends(models.Model):
-    name      = models.CharField(max_length=50)
+# class Friends(models.Model):
+#     name = models.CharField(max_length=50)
 
-class KeyVal(models.Model):
-    container = models.ForeignKey(Friends, db_index=True)
-    key       = models.CharField(max_length=240, db_index=True)
-    value     = models.CharField(max_length=240, db_index=True)
+# class KeyVal(models.Model):
+#     container = models.ForeignKey(Friends, db_index=True)
+#     key       = models.CharField(max_length=240, db_index=True)
+#     value     = models.CharField(max_length=240, db_index=True)
 
 class Schedule(models.Model):
     person = models.ForeignKey(
