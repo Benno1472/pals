@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+from django.contrib.auth import logout as lg
 from .models import Post
 
 # Create your views here.
@@ -70,6 +70,8 @@ def create_post_submit(request):
     return redirect('index')
 
 def logout(request):
-    # logout page
-    context = {}
-    return render(request, "registration/logout.html", context)
+    lg(request)
+    return redirect('index')
+
+def search(request):
+    pass
