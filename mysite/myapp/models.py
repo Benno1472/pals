@@ -11,14 +11,29 @@ from django.conf import settings
 # To add a item, Person_object.Post_set.create()
 # Works the same with the comment and post
 
+# to add friends:
+# p1 = Person.objects.create(person_name="jack",person_text="super")
+# p2 = Person.objects.create(person_name="bob", person_text="asd")
+# f1 = Friends(source=p1,target=p2)
+# f1.save()
+# see friends_list with p1.friends_list.all()
+# should be good
 
 class Person(models.Model):
     person_name = models.CharField(max_length=20, default="")
     person_text = models.CharField(max_length=200, default="")
+    friends_list = models.ManyToManyField('self', through = 'Friends',
+          symmetrical = False)
 
-    friends = []
+
+    class Meta:
+        ordering = ['person_name']
     def __str__(self):
         return self.person_name
+
+class Friends(models.Model):
+    source = models.ForeignKey(Person, related_name = 'source', on_delete=models.CASCADE)
+    target = models.ForeignKey(Person, related_name = 'target', on_delete=models.CASCADE)
 
 
 class Post(models.Model):
@@ -31,27 +46,20 @@ class Post(models.Model):
     posted_time = models.DateTimeField("previous time")
 
     post_used = 0
+
     def __str__(self):
         return self.post_text
-
-# How to use hashmap/dict
-#
-# class Friends(models.Model):
-#     name = models.CharField(max_length=50)
-
-# class KeyVal(models.Model):
-#     container = models.ForeignKey(Friends, db_index=True)
-#     key       = models.CharField(max_length=240, db_index=True)
-#     value     = models.CharField(max_length=240, db_index=True)
 
 class Schedule(models.Model):
     person = models.ForeignKey(
         Person, on_delete=models.CASCADE, default="Nobody")
     schedule_item = models.CharField(max_length=200, default="no text")
-    schedule_time = models.TimeField(auto_now=False,auto_now_add=False)
+    schedule_time = models.TimeF
+    ield(auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return self.schedule_item, self.schedule_time
+
 
 class Comment(models.Model):
 
