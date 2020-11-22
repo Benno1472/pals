@@ -1,0 +1,18 @@
+{% block content %}
+{% if user.is_authenticated %}
+
+<!-- prompt the user -->
+<p>Are You Sure You Want To Delete Your Acccount?</p>
+
+<!-- cancel the process (takes back to home page) -->
+<a href="/myapp">Cancel</a>
+<br><br><br>
+
+<!-- deletes the account and redirect to home page with no user logged in view -->
+<a href="/myapp/accounts/delete/confirmed">Confirm</a>
+<br>
+{% else %}
+<!-- if the user is not authenticated, tell them to login -->
+<a href="/myapp/accounts/login">If You Would Like To Delete Your Account Please Login</a>
+{% endif %}
+{% endblock %}

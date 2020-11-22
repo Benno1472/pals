@@ -115,7 +115,7 @@ def create(request):
         form = UserCreationForm(request.POST)
         # if the form is valid
         if form.is_valid():
-            # create the user and store
+            # create a new user and store it in the database
             form.save()
             # success message
             user = form.cleaned_data.get('username')
@@ -127,6 +127,24 @@ def create(request):
 
     context = {'form': form}
     return render(request, "registration/create.html", context)
+
+def delete_check(request):
+    # take the user to the confirm deletion page
+    context = {}
+    return render(request, "registration/delete.html", context)
+
+def delete_user(request):
+    # delete the user account from all databases
+    context = {}
+    # check authentication
+    if request.user.is_authenticated:
+        # get the username
+        username = request.user.username
+        # delete the user
+        u = User.objects.get(username=username)
+        u.delete()
+    # redirect back to the home page (logged out view)
+    return redirect('index')
 
 
 def create_post_submit(request):
@@ -142,6 +160,14 @@ def create_post_submit(request):
 
 def logout_page(request):
     logout(request)
+    return redirect('index')
+
+def delete_post(request, post_key):
+    q = get_object_or_404(Post, pk=post_key)
+
+    if request.user == q.user:
+        q.delete()
+
     return redirect('index')
 
 

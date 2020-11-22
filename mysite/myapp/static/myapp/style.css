@@ -20,15 +20,16 @@ a {
     text-decoration: none;
     color: rgb(180, 180, 180);
 }
+
 #style_block {
   width : 200px;
-  height :
   position: relative;
   top : 1;
   left:1;
   background-color: rgb(204,255,255);
 
 }
+
 #sidebar {
     width: 160px;
     position: fixed;
@@ -71,7 +72,6 @@ a {
     color: white;
     display: inline-block;
     width: calc(100% - 2px);
-    
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -82,9 +82,7 @@ a {
 
 #sidebar h1 {
     text-align: center;
-
 }
-
 
 #sidebar ul {
     list-style: none;
@@ -95,7 +93,7 @@ a {
     padding-left: 185px;
 }
 
-.post {
+.post, .person{
     width: 400px;
     background-color: rgb(250, 250, 250);
     padding: 10px;
@@ -172,7 +170,7 @@ a {
 
 }
 
-input[type=text] {
+input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

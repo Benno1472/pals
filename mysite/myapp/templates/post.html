@@ -10,6 +10,7 @@
     <div class="post-contents">
         <p>{{ post.post_text }}</p>
     </div>
+<<<<<<< HEAD
 
     <div class="post-reply">
 
@@ -25,8 +26,11 @@
     </div>
 
 
+=======
+>>>>>>> 7f8d35aa6af991aff860e8033e03f9c18bb633f8
     <div class="post-actions">
         <a href="#">Reply</a>
+        {% if post.user == request.user %}<a href="{% url 'delete_post' post.pk %}">Delete</a>{% endif %}
     </div>
 
 

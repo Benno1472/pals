@@ -13,6 +13,10 @@ urlpatterns = [
     path('accounts/create', views.create, name="create"),
     path('accounts/logout', views.logout_page, name="logout"),
     path('friends/show',views.show_friends, name="friends"),
+    path('delete/<int:post_key>', views.delete_post, name="delete_post"),
+    path('accounts/delete', views.delete_check, name="delete_check"),
+    # actual delete url (THIS WILL DELETE YOUR ACCOUNT)
+    path('accounts/delete/confirmed', views.delete_user, name="delete_user"),
     path('friends/send',views.send_friend_request, name="send_friend_request"),
     path('image_upload', views.post_image_view, name = 'image_upload'),
     path('success', views.success, name = 'success'),
