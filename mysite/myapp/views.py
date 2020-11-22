@@ -5,10 +5,37 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import Post
+from .models import Post, Comment
+from django.contrib.auth.models import User
+from friendship.models import Friend, Follow, Block,FriendshipRequest
+from django.contrib.auth import get_user_model
 
+
+
+# or friend_request.reject()
+def show_friends(request):
+    if request.user.is_authenticated:
+        context = dict(Friend.objects.friends(request.user))
+        return render(request,"friends.html",context)
+
+def show_users(request):
+    if request.user.is_authenticated:
+        User = get_user_model()
+        users = User.objects.all()
+        return users
+        
+def accept_friend_request(user_num):
+    friend_request = FriendshipRequest.objects.get(to_user=user_num)
+    friend_request.accept()
 # Create your views here.
 
+def send_friend_request(receiving_user, message_txt):
+
+    Friend.objects.add_friend(
+    request.user,
+    receiving_user,
+    message=message_txt
+    )
 
 def index(request):
 
@@ -81,6 +108,23 @@ def create(request):
 
     context = {'form': form}
     return render(request, "registration/create.html", context)
+
+def delete_check(request):
+    # take the user to the confirm deletion page
+    context = {}
+    return render(request, "registration/delete.html", context)
+
+def delete_user(request):
+    # get the user name and delete the account
+    context = {}
+    # check authentication
+    if request.user.is_authenticated:
+        # get the username
+        username = request.user.username
+        # delete the user
+        u = User.objects.get(username=username)
+        u.delete()
+    return redirect('index')
 
 
 def create_post_submit(request):

@@ -2,6 +2,9 @@ from django.db import models
 from django.utils import timezone
 from PIL import Image
 from django.conf import settings
+from django.contrib.auth.models import User
+from friendship.models import Friend, Follow, Block
+
 
 # Create your models here.
 # find person first, then get posts though ID
