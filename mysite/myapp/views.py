@@ -149,7 +149,3 @@ def delete_post(request, post_key):
         q.delete()
 
     return redirect('index')
-
-
-def search(request):
-    pass
