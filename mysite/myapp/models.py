@@ -55,7 +55,7 @@ class Schedule(models.Model):
 
 class Comment(models.Model):
 
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, default="Nothing")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)
     comment_text = models.CharField(max_length=200, default="")
 
     def return_info(self):
