@@ -3,7 +3,7 @@
 <div class="post">
 
     <div class="post-header">
-        <p class="username"><a href="{% url 'profile' user.username %}">{{ post.user }}</a></p>
+        <p class="username"><a href="{% url 'profile' post.user.username %}">{{ post.user }}</a></p>
         <p class="timestamp">{{ post.posted_time|naturaltime }}</p>
     </div>
 
