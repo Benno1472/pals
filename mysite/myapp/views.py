@@ -96,7 +96,7 @@ def create(request):
         form = UserCreationForm(request.POST)
         # if the form is valid
         if form.is_valid():
-            # create the user and store
+            # create a new user and store it in the database
             form.save()
             # success message
             user = form.cleaned_data.get('username')
@@ -115,7 +115,7 @@ def delete_check(request):
     return render(request, "registration/delete.html", context)
 
 def delete_user(request):
-    # get the user name and delete the account
+    # delete the user account from all databases
     context = {}
     # check authentication
     if request.user.is_authenticated:
@@ -124,6 +124,7 @@ def delete_user(request):
         # delete the user
         u = User.objects.get(username=username)
         u.delete()
+    # redirect back to the home page (logged out view)
     return redirect('index')
 
 

@@ -11,8 +11,12 @@ urlpatterns = [
     path('accounts/create', views.create, name="create"),
     path('accounts/logout', views.logout_page, name="logout"),
     path('friends/show',views.show_friends, name="friends"),
+<<<<<<< Updated upstream
     path('delete/<int:post_key>', views.delete_post, name="delete_post"),
     # delete confirmation url
+=======
+    # delete confirmation url (takes the user to a confirmation page)
+>>>>>>> Stashed changes
     path('accounts/delete', views.delete_check, name="delete_check"),
     # actual delete url (this will delete your account, be careful)
     path('accounts/delete/confirmed', views.delete_user, name="delete_user")

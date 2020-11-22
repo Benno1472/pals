@@ -8,11 +8,11 @@ Pals is different from popular social media platforms because if purposely lacks
 Throughout the making of Pals we learnt how to use [Django](https://www.djangoproject.com/), a Python web framework used to create websites. We strengthened collaboration skills and practiced our Git skills using [github](https://github.com/).
 
 # Usage
-1. download the project from the [repo](https://github.com/rajanmaghera/hack-western-7)
-2. run `python3 -m pip install Pillow django-friendship`
-3. start the server with `python3 manage.py runserver`
-4. navigate to `http://127.0.0.1:8000/myapp/`
-5. create an acccount and enjoy!
+1. Download the project from the [repo](https://github.com/rajanmaghera/hack-western-7)
+2. Run `python3 -m pip install Pillow django-friendship`
+3. Start the server with `python3 manage.py runserver`
+4. Navigate to `http://127.0.0.1:8000/myapp/`
+5. Create an acccount and enjoy!
 
 # Created With
 ```DJANGO``` ```PYTHON``` ```HTML``` ```CSS``` ```SQLite```
