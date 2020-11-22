@@ -23,7 +23,8 @@
             <li><a href="{% url 'create_post' %}">Create Post</a></li>
             <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
             <li><a href="#">Pals List</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>          
+            <li><a href="{% url 'delete_check' %}">Delete Account</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
             {% endif %}
