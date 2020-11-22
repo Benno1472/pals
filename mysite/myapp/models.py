@@ -11,10 +11,7 @@ from django.conf import settings
 # To add a item, Person_object.Post_set.create()
 # Works the same with the comment and post
 
-# to add friends:
-# p1 = Person.objects.create(person_name="jack",person_text="super")
-# p2 = Person.objects.create(person_name="bob", person_text="asd")
-# f1 = Friends(source=p1,target=p2)
+# f1 = Friends(source=user1,target=user2)
 # f1.save()
 # see friends_list with p1.friends_list.all()
 # should be good
@@ -32,8 +29,8 @@ class Person(models.Model):
         return self.person_name
 
 class Friends(models.Model):
-    source = models.ForeignKey(Person, related_name = 'source', on_delete=models.CASCADE)
-    target = models.ForeignKey(Person, related_name = 'target', on_delete=models.CASCADE)
+    source = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = 'source', on_delete=models.CASCADE,default=None)
+    target = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = 'target', on_delete=models.CASCADE, default=None)
 
 
 class Post(models.Model):
