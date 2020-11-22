@@ -9,7 +9,14 @@
     {% csrf_token %}
     <label for="text_name">Post Text </label>
     <input id="text_name" type="text" name="body">
+
     <input type="submit" value="Post">
+</form>
+<form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <input id="text_name" type="file" name="image">
+    <button type="submit">Upload</button>
 </form>
 
 {% endblock %}

@@ -1,5 +1,7 @@
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('myapp/', include('friendship.urls')),
@@ -10,6 +12,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/create', views.create, name="create"),
     path('accounts/logout', views.logout_page, name="logout"),
-    path('friends/show',views.show_friends, name="friends")
-
+    path('friends/show',views.show_friends, name="friends"),
+    path('friends/send',views.send_friend_request, name="send_friend_request"),
+    path('image_upload', views.post_image_view, name = 'image_upload'),
+    path('success', views.success, name = 'success'),
 ]

@@ -7,35 +7,53 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Post, Comment
 from django.contrib.auth.models import User
-from friendship.models import Friend, Follow, Block,FriendshipRequest
+from friendship.models import Friend, Follow, Block, FriendshipRequest
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .forms import *
 
 
+def post_image_view(request):
+    if request.method == 'POST':
+        form = Post_Form(request.POST, request.FILES)
 
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = Post_Form()
+    return render(request, 'create_post.html', {'form': form})
+
+
+def success(request):
+    return HttpResponse('successfully uploaded')
 # or friend_request.reject()
-def show_friends(request):
-    if request.user.is_authenticated:
-        context = dict(Friend.objects.friends(request.user))
-        return render(request,"friends.html",context)
 
-def show_users(request):
+
+def show_friends(request):
     if request.user.is_authenticated:
         User = get_user_model()
         users = User.objects.all()
-        return users
-        
+        context = {'friends_list': dict(
+            Friend.objects.friends(request.user)), "users": users}
+        return render(request, "friends.html", context)
+
+
 def accept_friend_request(user_num):
     friend_request = FriendshipRequest.objects.get(to_user=user_num)
     friend_request.accept()
 # Create your views here.
 
-def send_friend_request(receiving_user, message_txt):
+
+def send_friend_request(request, receiving_user, message_txt):
 
     Friend.objects.add_friend(
-    request.user,
-    receiving_user,
-    message=message_txt
+        request.user,
+        receiving_user,
+        message=message_txt
     )
+
 
 def index(request):
 
@@ -88,6 +106,7 @@ def login_page(request):
     context = {}
     return render(request, "myapp/registration/login.html", context)
 
+
 def create(request):
     # default User Creation Form from django
     form = UserCreationForm()
@@ -113,8 +132,9 @@ def create(request):
 def create_post_submit(request):
     if request.user.is_authenticated:
         body = request.POST['body']
+        image = request.POST['image']
         # y
-        q = Post(post_text=body, posted_time=timezone.now(),
+        q = Post(post_text=body, post_img=image, posted_time=timezone.now(),
                  id=None, user=request.user)
         q.save()
     return redirect('index')
@@ -123,6 +143,7 @@ def create_post_submit(request):
 def logout_page(request):
     logout(request)
     return redirect('index')
+
 
 def search(request):
     pass

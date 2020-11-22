@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from friendship.models import Friend, Follow, Block
 
-
 # Create your models here.
 # find person first, then get posts though ID
 # from myapp.models import Person, Comment, Post, Schedule
@@ -39,8 +38,9 @@ class Friends(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    print("uploading")
     post_img = models.ImageField(
-        upload_to=None, height_field=None, width_field=None, max_length=100, default="No picture")
+        upload_to=None, default="No picture")
     post_text = models.CharField(max_length=200, default="no text")
     # when you are getting this date, remeber to subtract to get time since last
     posted_time = models.DateTimeField("previous time")
@@ -49,7 +49,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.post_text
-
 class Schedule(models.Model):
     person = models.ForeignKey(
         Person, on_delete=models.CASCADE, default="Nobody")
