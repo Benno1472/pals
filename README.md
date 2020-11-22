@@ -1,1 +1,12 @@
-# hack-western-7
+# The Inspiration Behind Our Project...
+# What It Does...
+# Challenges...
+# Things Learnt...
+
+# Created With
+```DJANGO``` ```PYTHON``` ```HTML``` ```CSS```
+
+# Created by
+* Rajan Maghera
+* Youngwoo Seo
+* Ben Leszczynski

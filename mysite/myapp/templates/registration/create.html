@@ -6,25 +6,26 @@
 
 <h1>Create Account</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{form.username.label}}
-        <br>
-        {{form.username}}
-        <br><br><br>
-        {{form.password1.label}}
-        <br>
-        {{form.password1}}
-        <br><br><br>
-        {{form.password2.label}}
-        <br>
-        {{form.password2}}
-        <br><br>
-        <button type="submit">Create Account</button>
-        <br><br>
-        <!-- display any errors -->
-        {{form.errors}}
-        <p>Already have an account? Login <a href="\myapp/accounts/login">here</a></p>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    {{form.username.label}}
+    <br>
+    {{form.username}}
+    <br><br><br>
+    {{form.password1.label}}
+    <br>
+    {{form.password1}}
+    <br><br><br>
+    {{form.password2.label}}
+    <br>
+    {{form.password2}}
+    <br><br>
+    <button type="submit">Create Account</button>
+    <br><br>
+    <!-- display any errors -->
+    {{form.errors}}
 
-    {% endblock %}
+    <p>Already have an account? Login <a href="\myapp/accounts/login">here</a></p>
+</form>
+
+{% endblock %}
