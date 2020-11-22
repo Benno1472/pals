@@ -15,7 +15,7 @@ Throughout the making of Pals we learnt how to use [Django](https://www.djangopr
 5. create an acccount and enjoy!
 
 # Created With
-```DJANGO``` ```PYTHON``` ```HTML``` ```CSS```
+```DJANGO``` ```PYTHON``` ```HTML``` ```CSS``` ```SQLite```
 
 # Created by
 * [Rajan Maghera](https://github.com/rajanmaghera)
