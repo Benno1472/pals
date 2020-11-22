@@ -45,6 +45,7 @@ def login_page(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        # check if credidentials are valid (returns NoneType if not valid )
         user = authenticate(request, username=username, password=password)
 
         # check if user exists
