@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap');
 
+@keyframes sidebar-hover {
+    0%   {background-color: #23c260;}
+    100% {background-color: #1a9b4b;}
+  }
+
+
+div {
+    box-sizing: border-box;
+}
+
 html {
     font-family: 'Hind Madurai', sans-serif;
 
@@ -18,14 +28,48 @@ a {
     top: 1;
     left: 1;
     margin: 4px;
-    border-width: 1px;
-    border-color: rgb(139, 139, 139);
-    border-style: solid;
+    background-color: #23c260;
+    border-radius: 6px;
     list-style: none;
+    color: white;
+}
+
+#sidebar ul {
+    padding: 0;
+    border-width: 1px 0px 1px 0px;
+    border-color: white;
+    border-style: solid;
+}
+
+#sidebar li {
+    text-align: center;
+
+}
+
+#sidebar a:hover {
+
+    animation-name: sidebar-hover;
+    animation-duration: 0.3s;
+    background-color: #1a9b4b;
+}
+
+#sidebar a:active{
+
+    background-color: #157a3c;
+
 }
 
 #sidebar a {
-    color: rgb(78, 168, 228);
+    color: white;
+    display: inline-block;
+    width: calc(100% - 2px);
+    
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-width: 1px 0px 1px 0px;
+    border-color: white;
+    border-style: solid;
 }
 
 #sidebar h1 {
@@ -33,9 +77,6 @@ a {
 
 }
 
-#sidebar a:hover {
-    color: rgb(44, 121, 172);
-}
 
 #sidebar ul {
     list-style: none;
