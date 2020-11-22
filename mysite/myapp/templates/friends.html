@@ -5,12 +5,7 @@
 {% block content %}
 <h1> Friends </h1>
 
-<h1> Other Users </h1>
-{% for user in users %}
-  <li>{{user}}</li>
-{% endfor %}
-<h1> Add friends </h1>
-<form action="{% url 'send_friend_request' %}" method="post">
-    <label for="">Post Text </label>
-</form>
+
+
+
 {% endblock %}
