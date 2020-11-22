@@ -10,22 +10,9 @@
     <div class="post-contents">
         <p>{{ post.post_text }}</p>
     </div>
-
-    <div class="post-reply">
-
-        <div class="post-reply-head">
-            <p class="username"><a href="#">{{ post.user }}</a></p>
-            <p class="timestamp">{{ post.posted_time|naturaltime }}</p>
-        </div>
-
-        <div class="post-reply-contents">
-            <p>{{ post.post_text }}</p>
-        </div>
-    </div>
-
-
     <div class="post-actions">
         <a href="#">Reply</a>
+        {% if post.user == request.user %}<a href="{% url 'delete_post' post.pk %}">Delete</a>{% endif %}
     </div>
 
 

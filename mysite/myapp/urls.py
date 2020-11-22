@@ -11,6 +11,7 @@ urlpatterns = [
     path('accounts/create', views.create, name="create"),
     path('accounts/logout', views.logout_page, name="logout"),
     path('friends/show',views.show_friends, name="friends"),
+    path('delete/<int:post_key>', views.delete_post, name="delete_post"),
     # delete confirmation url
     path('accounts/delete', views.delete_check, name="delete_check"),
     # actual delete url (this will delete your account, be careful)

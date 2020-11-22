@@ -141,5 +141,14 @@ def logout_page(request):
     logout(request)
     return redirect('index')
 
+def delete_post(request, post_key):
+    q = get_object_or_404(Post, pk=post_key)
+    
+    if request.user == q.user:
+        q.delete()
+    
+    return redirect('index')
+
+
 def search(request):
     pass
