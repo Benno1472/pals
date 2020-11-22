@@ -4,7 +4,7 @@ Hack Western 7 (2020) Project.
 
 Pals - The social media site designed to be used less.
 
-[[/screenshots/home.png|Home Page]]
+[[/screenshots/home.png]]
 [View More Screenshots](/images.md)
 
 ## The Inspiration Behind 'Pals'
